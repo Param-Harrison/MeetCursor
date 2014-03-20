@@ -2,12 +2,13 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
+angular.module('myApp.controllers', ['ngRoute']).
   controller('AppCtrl', function ($scope, socket) {
   }).
   controller('HomeCtrl', function ($scope, socket) {
     $scope.username = '';
     $scope.valid = false;
+    
     $scope.submitName = function () {
       if ($scope.username) {
           var data = {'name': $scope.username, 'pos': currentMousePos};
@@ -25,8 +26,15 @@ angular.module('myApp.controllers', []).
     });
   });
 
+
 var currentMousePos = { x: -1, y: -1 };
 $(document).mousemove(function(event) {
-    currentMousePos.x = event.pageX;
-    currentMousePos.y = event.pageY;
+  var width = $(document).width();
+  var height = $(document).height();
+  var ePageX = (event.pageX - 10) * 100 / width;
+  var ePageY = (event.pageY - 10) * 100 / height;
+  if(ePageX > 100) ePageX = 100;
+  if(ePageY > 100) ePageY = 100; 
+  currentMousePos.x = ePageX;
+  currentMousePos.y = ePageY;
 });

@@ -8,7 +8,7 @@ module.exports = function (socket, io, usernames) {
   	usernames[data.name] = {};
   	usernames[data.name].name = data.name;
   	usernames[data.name].pos = data.pos;
-	io.sockets.emit('updateusers', usernames);
+	  io.sockets.emit('updateusers', usernames);
   });
 
   // when the user disconnects.. perform this

@@ -6,6 +6,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.controllers',
   'myApp.services',
+  'myApp.directives',
 
   // 3rd party dependencies
   'btford.socket-io'
