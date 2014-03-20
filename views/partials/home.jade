@@ -1,0 +1,10 @@
+form(ng-submit='submitName()', ng-show='!valid')
+  div(class='email-form')
+    div(class='input-group')
+      input(type='text', placeholder='User Name', class='form-control', name='name', id='username', ng-model="username")
+      div(class="input-group-btn")
+        button(type="submit", ng-click="submitName()", class='btn btn-primary') Meet Cursors
+
+div(id='sidebar-wrapper', ng-show='valid')
+  div(class='sidebar-nav', ng-repeat='user in usernames')
+    div(class='cursors', style='left:{{ user.pos.x }}px;top:{{ user.pos.y }}px') {{ user.name }}

@@ -1,0 +1,31 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url('/images/bg/parrot.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #444;
+  margin: 0;
+  padding: 0;
+  max-width: 600px;
+  margin-top: 100px;
+  overflow: hidden;
+}
+.email-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+a {
+  color: #00B7FF;
+}
+.sidebar-nav {
+  font-size: 16px;
+  list-style: none;
+}
+.cursors {
+  position: absolute;
+  background: #58a549;
+  color: #fff;
+  padding: 2px 5px;
+}
