@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', ['ngRoute']).
+angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($scope, socket) {
   }).
   controller('HomeCtrl', function ($scope, socket) {
@@ -18,9 +18,17 @@ angular.module('myApp.controllers', ['ngRoute']).
           setInterval(function() {
             var data = {'name': $scope.username, 'pos': currentMousePos};
             socket.emit('adduser', data);
-          }, 10);
+          }, 200);
       }
     };
+
+    $scope.myStyleFunction = function($last) {
+      return {
+        'left': $last.x + '%',
+        'top': $last.y + '%'
+      };
+    }
+
     socket.on('updateusers', function (usernames) {
       $scope.usernames = usernames;
     });

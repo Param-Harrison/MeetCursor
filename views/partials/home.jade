@@ -7,4 +7,12 @@ form(ng-submit='submitName()', ng-show='!valid')
 
 div(id='sidebar-wrapper', ng-show='valid')
   div(class='sidebar-nav', ng-repeat='user in usernames')
-    div(class='cursors', style='left:{{ user.pos.x }}%;top:{{ user.pos.y }}%;') {{ user.name }}
+    div(class='cursors', ng-style='myStyleFunction(user.pos)') {{ user.name }}
+  
+  div(class="side-bar")
+    div(class='session-dots') &nbsp
+    div(class='session-time sess-det') 00:00
+    div(class='session-end sess-det') end
+    ul(class='top-user-nav')
+      li(class='user-initials', ng-repeat='user in usernames', title='{{user.name}}') {{ user.initial }}
+    div(class='session-dots') &nbsp
