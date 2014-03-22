@@ -47,9 +47,9 @@ app.get('/partials/:name', routes.partials);
 app.get('*', routes.index);
 
 // Socket.io Communication
-var usernames = {};
+var usernames = {}, conversation = [];
 io.sockets.on('connection', function(socket) {
-	require('./routes/socket')(socket, io, usernames);
+	require('./routes/socket')(socket, io, usernames, conversation);
 });
 
 /**

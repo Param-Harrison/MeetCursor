@@ -2,7 +2,7 @@
  * Serve content over a socket
  */
 
-module.exports = function (socket, io, usernames) {
+module.exports = function (socket, io, usernames, conversation) {
   socket.on('adduser', function(data) {
   	socket.username = data.name;
   	usernames[data.name] = {};
@@ -13,6 +13,11 @@ module.exports = function (socket, io, usernames) {
   	usernames[data.name].name = data.name;
   	usernames[data.name].pos = data.pos;
 	  io.sockets.emit('updateusers', usernames);
+  });
+
+  socket.on('addChat', function(data) {
+    conversation.push(data);
+    io.sockets.emit('updateCoverso', conversation);
   });
 
   // when the user disconnects.. perform this

@@ -6,7 +6,7 @@ angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($scope, socket) {
   }).
   controller('HomeCtrl', function ($scope, socket) {
-    $scope.username = '';
+    $scope.username = '', $scope.chatText = '';
     $scope.valid = false;
     
     $scope.submitName = function () {
@@ -28,6 +28,20 @@ angular.module('myApp.controllers', []).
         'top': $last.y + '%'
       };
     }
+
+    $scope.AddCoversation = function() {
+      if($scope.chatText)
+      {
+        var data = { 'name': $scope.username, 'text': $scope.chatText };
+        socket.emit('addChat', data);
+        $scope.chatText = '';
+      }
+    }
+
+    socket.on('updateCoverso', function(conversation){
+      console.log(conversation);
+      $scope.conversation = conversation;
+    });
 
     socket.on('updateusers', function (usernames) {
       $scope.usernames = usernames;

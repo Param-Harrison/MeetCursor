@@ -16,3 +16,12 @@ div(id='sidebar-wrapper', ng-show='valid')
     ul(class='top-user-nav')
       li(class='user-initials', ng-repeat='user in usernames', title='{{user.name}}') {{ user.initial }}
     div(class='session-dots') &nbsp
+
+  div(class='chat-box')
+    div(class='chat-head') Chat
+    div(class='chat-body', scroll-glue)
+      div(class='inside-chat', ng-repeat='chat in conversation') 
+        strong {{ chat.name }} 
+        span : {{ chat.text }}
+    form(ng-submit='AddCoversation()')
+      input(type='text', placeholder='something interesting here dude!', class='form-control', name='chat-text', id='chat-text', ng-model="chatText")
