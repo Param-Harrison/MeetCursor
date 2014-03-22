@@ -33,6 +33,7 @@ if (app.get('env') === 'development') {
 // production only
 if (app.get('env') === 'production') {
   // TODO
+  io.set('log level', 1);
 };
 
 /**
@@ -47,9 +48,8 @@ app.get('/partials/:name', routes.partials);
 app.get('*', routes.index);
 
 // Socket.io Communication
-var usernames = {}, conversation = [];
 io.sockets.on('connection', function(socket) {
-	require('./routes/socket')(socket, io, usernames, conversation);
+	require('./routes/socket')(socket, io);
 });
 
 /**

@@ -11,8 +11,8 @@ div(id='sidebar-wrapper', ng-show='valid')
   
   div(class="side-bar")
     div(class='session-dots') &nbsp
-    div(class='session-time sess-det') 00:00
-    div(class='session-end sess-det') end
+    div(class='session-time sess-det') {{ time }}
+    div(class='session-end sess-det', ng-click='endSession()') end
     ul(class='top-user-nav')
       li(class='user-initials', ng-repeat='user in usernames', title='{{user.name}}') {{ user.initial }}
     div(class='session-dots') &nbsp
